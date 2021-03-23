@@ -58,15 +58,19 @@
   dispatch_once(&onceToken, ^{
     NSBundle *containingBundle;
     NSURL *bundleURL;
+
+    // When using SPM, Xcode scopes resources to a target, creating a specific bundle.
+    NSString *bundledResource;
+    #if SWIFT_PACKAGE
+    bundledResource = @"Firebase_FirebaseInAppMessaging";
+    #else
+    bundledResource = @"InAppMessagingDisplayResources";
+    #endif
+
     // The containing bundle is different whether FIAM is statically or dynamically linked.
     for (containingBundle in @[ [NSBundle mainBundle], [NSBundle bundleForClass:myClass] ]) {
-      #if SWIFT_PACKAGE
-      bundleURL = [containingBundle URLForResource:@"Firebase_FirebaseInAppMessaging"
+      bundleURL = [containingBundle URLForResource:bundledResource
                                      withExtension:@"bundle"];
-      #else
-      bundleURL = [containingBundle URLForResource:@"InAppMessagingDisplayResources"
-                                     withExtension:@"bundle"];
-      #endif
       if (bundleURL != nil) break;
     }
     if (bundleURL == nil) {
