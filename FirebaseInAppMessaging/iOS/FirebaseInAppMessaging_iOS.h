@@ -16,5 +16,5 @@
 
 NSBundle* Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE(void);
 
-#define Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE \
-  Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE()
+//#define Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE \
+//  Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE()

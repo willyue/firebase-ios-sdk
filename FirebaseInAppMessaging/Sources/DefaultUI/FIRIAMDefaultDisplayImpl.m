@@ -83,7 +83,7 @@
       return;
     }
 
-    NSBundle *bundle = Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE;
+    NSBundle *bundle = Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE();
 
     resourceBundle = SWIFTPM_MODULE_BUNDLE;  //[NSBundle bundleWithURL:bundleURL];
 
