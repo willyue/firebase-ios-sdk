@@ -599,6 +599,7 @@ let package = Package(
         .product(name: "GULEnvironment", package: "GoogleUtilities"),
         .product(name: "nanopb", package: "nanopb"),
         .target(name: "FirebaseInAppMessaging_iOS", condition: .when(platforms: [.iOS])),
+        .target(name: "FirebaseInAppMessaging_tvOS", condition: .when(platforms: [.tvOS])),
       ],
       path: "FirebaseInAppMessaging/Sources",
       exclude: [
@@ -617,6 +618,12 @@ let package = Package(
     .target(
       name: "FirebaseInAppMessaging_iOS",
       path: "FirebaseInAppMessaging/iOS",
+      resources: [.process("Resources")]
+    ),
+
+    .target(
+      name: "FirebaseInAppMessaging_tvOS",
+      path: "FirebaseInAppMessaging/tvOS",
       resources: [.process("Resources")]
     ),
 
