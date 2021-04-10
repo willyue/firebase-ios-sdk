@@ -48,7 +48,7 @@
 }
 
 + (NSBundle *)getViewResourceBundle {
-  static NSBundle *resourceBundle;
+  __block NSBundle *resourceBundle;
   static dispatch_once_t onceToken;
   Class myClass = [self class];
 
@@ -80,7 +80,9 @@
       return;
     }
 
-    resourceBundle = [NSBundle bundleWithURL:bundleURL];
+    NSBundle *bundle = Firebase_FirebaseInAppMessaging_SWIFTPM_MODULE_BUNDLE();
+
+    resourceBundle = SWIFTPM_MODULE_BUNDLE;  //[NSBundle bundleWithURL:bundleURL];
 
     if (resourceBundle == nil) {
       FIRLogWarning(kFIRLoggerInAppMessagingDisplay, @"I-FID100007",

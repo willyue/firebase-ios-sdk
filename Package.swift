@@ -606,6 +606,7 @@ let package = Package(
         "DefaultUI/CHANGELOG.md",
         "DefaultUI/README.md",
       ],
+      resources: [.process("Resources")],
       publicHeadersPath: "Public",
       cSettings: [
         .headerSearchPath("../../"),
