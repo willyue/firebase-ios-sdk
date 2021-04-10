@@ -12,4 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Prevent a missing umbrella header warning.
+#import <Foundation/Foundation.h>
+
+NSBundle* Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE(void);
+
+#define Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE \
+  Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE()

@@ -29,6 +29,9 @@
 #import "FirebaseInAppMessaging/Sources/Private/Util/FIRIAMTimeFetcher.h"
 #import "FirebaseInAppMessaging/Sources/Public/FirebaseInAppMessaging/FIRInAppMessaging.h"
 
+// Platform
+#import "FirebaseInAppMessaging/iOS/FirebaseInAppMessaging_iOS.h"
+
 @implementation FIRIAMDefaultDisplayImpl
 
 + (void)load {
@@ -80,7 +83,7 @@
       return;
     }
 
-    NSBundle *bundle = Firebase_FirebaseInAppMessaging_SWIFTPM_MODULE_BUNDLE();
+    NSBundle *bundle = Firebase_FirebaseInAppMessaging_iOS_SWIFTPM_MODULE_BUNDLE;
 
     resourceBundle = SWIFTPM_MODULE_BUNDLE;  //[NSBundle bundleWithURL:bundleURL];
 
