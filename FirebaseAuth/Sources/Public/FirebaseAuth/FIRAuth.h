@@ -94,7 +94,8 @@ typedef void (^FIRAuthDataResultCallback)(FIRAuthDataResult *_Nullable authResul
         changes (for example, a new token has been produced, a user signs in or signs out). The
         object parameter of the notification is the sender `FIRAuth` instance.
  */
-extern const NSNotificationName FIRAuthStateDidChangeNotification NS_SWIFT_NAME(AuthStateDidChange);
+extern const NSNotificationName FIRAuthStateDidChangeNotification;
+extern const NSString *FIRTestNotification;
 #else
 /**
     @brief The name of the `NSNotificationCenter` notification which is posted when the auth state
