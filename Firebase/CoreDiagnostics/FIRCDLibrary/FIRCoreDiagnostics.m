@@ -516,9 +516,9 @@ void FIRPopulateProtoWithInfoPlistValues(logs_proto_mobilesdk_ios_ICoreConfigura
     FIRCoreDiagnosticsLog *log = [[FIRCoreDiagnosticsLog alloc] initWithConfig:icore_config];
 
     // Send the log as a telemetry event.
-    GDTCOREvent *event = [self.transport eventForTransport];
-    event.dataObject = (id<GDTCOREventDataObject>)log;
-    [self.transport sendTelemetryEvent:event];
+    // GDTCOREvent *event = [self.transport eventForTransport];
+    // event.dataObject = (id<GDTCOREventDataObject>)log;
+    // [self.transport sendTelemetryEvent:event];
   });
 }
 
