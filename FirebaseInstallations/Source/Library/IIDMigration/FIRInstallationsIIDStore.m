@@ -36,6 +36,7 @@ static NSString *const kFIRInstallationsIIDCreationTimePlistKey = @"|S|cre";
 - (FBLPromise<NSString *> *)existingIID {
   return [FBLPromise onQueue:dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)
                           do:^id _Nullable {
+                            NSLog(@"will try to call here");
                             if (![self hasPlistIIDFlag]) {
                               return nil;
                             }
@@ -67,10 +68,18 @@ static NSString *const kFIRInstallationsIIDCreationTimePlistKey = @"|S|cre";
 #pragma mark - IID decoding
 
 - (NSString *)IIDWithPublicKeyData:(NSData *)publicKeyData {
-  NSData *publicKeySHA1 = [self sha1WithData:publicKeyData];
+    
+  /*
+  * ** Will Choy **
+  * No longer used as migration won't happen because previously not using legacy SDK
+  * https://firebase.google.com/support/release-notes/ios#instanceid_2
+  * To prevent security team to query this unnecessary codes
+  *
+  * NSData *publicKeySHA1 = [self sha1WithData:publicKeyData];
+  */
 
-  const uint8_t *bytes = publicKeySHA1.bytes;
-  NSMutableData *identityData = [NSMutableData dataWithData:publicKeySHA1];
+  const uint8_t *bytes = publicKeyData.bytes;
+  NSMutableData *identityData = [NSMutableData dataWithData:publicKeyData];
 
   uint8_t b0 = bytes[0];
   // Take the first byte and make the initial four 7 by initially making the initial 4 bits 0
@@ -88,7 +97,12 @@ static NSString *const kFIRInstallationsIIDCreationTimePlistKey = @"|S|cre";
  * for any security-relevant process. This is a one-time step that allows migration of old client
  * identifiers. Cryptographic security is not needed here, so potential hash collisions are not a
  * problem.
- */
+ *
+ * ** Will Choy **
+ * No longer used as migration won't happen because previously not using legacy SDK
+ * To prevent security team to query this unnecessary codes
+ * https://firebase.google.com/support/release-notes/ios#instanceid_2
+ *
 - (NSData *)sha1WithData:(NSData *)data {
   unsigned char output[CC_SHA1_DIGEST_LENGTH];
   unsigned int length = (unsigned int)[data length];
@@ -96,6 +110,8 @@ static NSString *const kFIRInstallationsIIDCreationTimePlistKey = @"|S|cre";
   CC_SHA1(data.bytes, length, output);
   return [NSData dataWithBytes:output length:CC_SHA1_DIGEST_LENGTH];
 }
+ *
+ */
 
 - (NSString *)base64URLEncodedStringWithData:(NSData *)data {
   NSString *string = [data base64EncodedStringWithOptions:0];
